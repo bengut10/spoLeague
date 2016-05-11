@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>displayData</class>
+ <widget class="QDialog" name="displayData">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>577</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTableWidget" name="tableDatos">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>491</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Team</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Pts</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Win</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tied</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

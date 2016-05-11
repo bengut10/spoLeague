@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
+#include "leagueselection.h"
 
 
 namespace Ui {
@@ -18,20 +16,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void crearTablaEquipo();
-    void insertEquipo();
-    void showData();
-    void updateData();
-    void deleteData();
 
 private slots:
-    void on_pushButtonagregar_clicked();
-    void on_pushButtonUpdate_clicked();
-    void on_pushButtonDelete_clicked();
+
+    void on_pushButtonLogin_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QSqlDatabase db;
+    LeagueSelection * leagueSelect;
 };
 
 #endif // MAINWINDOW_H
