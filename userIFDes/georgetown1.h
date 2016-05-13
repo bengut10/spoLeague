@@ -19,13 +19,16 @@ class georgetown1 : public QDialog
 public:
     explicit georgetown1(QWidget *parent = 0);
     ~georgetown1();
+
+
+private slots:
+    void on_displayName_clicked();
     void on_pushButtonagregar_clicked();
     void on_pushButtonUpdate_clicked();
     void on_pushButtonDelete_clicked();
 
 private:
     Ui::georgetown1 *ui;
-    Ui::georgetown1 *temp = ui;
     functionality *dataHandler;
     QSqlDatabase db;
 };

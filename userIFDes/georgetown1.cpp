@@ -35,18 +35,26 @@ georgetown1::~georgetown1()
 
 void georgetown1::on_pushButtonagregar_clicked()
 {
+    qDebug()<<"here lol ";
     dataHandler->insertEquipo<Ui::georgetown1>(*ui);
     dataHandler->showData<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonUpdate_clicked()
 {
+     qDebug()<<"here lol ";
     dataHandler->updateData<Ui::georgetown1>(*ui);
     dataHandler->showData<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonDelete_clicked()
 {
+     qDebug()<<"here lol ";
     dataHandler->deleteData<Ui::georgetown1>(*ui);
     dataHandler->showData<Ui::georgetown1>(*ui);
+}
+
+void georgetown1::on_displayName_clicked()
+{
+    qDebug() << "here";
 }

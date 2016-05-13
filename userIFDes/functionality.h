@@ -145,8 +145,4 @@ private:
 
 
 
-
-
-
-
 #endif // FUNCTIONALITY_H

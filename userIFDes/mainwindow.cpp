@@ -20,7 +20,7 @@ void MainWindow::on_pushButtonLogin_clicked()
 {
     QString userN = ui->lineEditUserN->text();
     QString passW = ui->lineEditPassW->text();
-    if(userN == "bensti06" && passW == "Brz2013!")
+    if(userN == "test" && passW == "test")
     {
         hide();
         leagueSelect = new LeagueSelection(this);

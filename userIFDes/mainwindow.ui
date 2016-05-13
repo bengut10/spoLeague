@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>494</width>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>261</width>
-      <height>191</height>
+      <x>10</x>
+      <y>1</y>
+      <width>481</width>
+      <height>371</height>
      </rect>
     </property>
     <property name="title">
@@ -39,7 +39,7 @@
       <string>Login</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -80,18 +80,6 @@
      </layout>
     </widget>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>splitter</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
-   <zorder>lineEditLoss</zorder>
-   <zorder>lineEditDiff</zorder>
-   <zorder>displayName</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
