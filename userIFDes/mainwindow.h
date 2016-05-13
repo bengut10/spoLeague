@@ -26,4 +26,5 @@ private:
     LeagueSelection * leagueSelect;
 };
 
+
 #endif // MAINWINDOW_H

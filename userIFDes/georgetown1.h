@@ -1,6 +1,7 @@
 #ifndef GEORGETOWN1_H
 #define GEORGETOWN1_H
 #include <QDialog>
+
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
@@ -24,7 +25,8 @@ public:
 
 private:
     Ui::georgetown1 *ui;
-    functionality * dataHandler;
+    Ui::georgetown1 *temp = ui;
+    functionality *dataHandler;
     QSqlDatabase db;
 };
 

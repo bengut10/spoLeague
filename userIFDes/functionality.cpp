@@ -1,17 +1,12 @@
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
-#include <QDebug>
 
 #include "functionality.h"
-#include "georgetown1.h"
-#include "ui_georgetown1.h"
 
 functionality::functionality()
 {
 }
 
-void functionality::showData(Ui::georgetown1 *obj)
+
+void functionality::showData()
 {
     QString consulta;
     consulta.append("SELECT * FROM equipos ORDER BY pts DESC");
@@ -64,7 +59,7 @@ void functionality::crearTablaEquipo()
     }
 }
 
-void functionality::insertEquipo(Ui::georgetown1 *obj)
+void functionality::insertEquipo()
 {
     QString consulta;
     consulta.append("INSERT INTO equipos("
@@ -92,9 +87,8 @@ void functionality::insertEquipo(Ui::georgetown1 *obj)
 }
 
 
-void functionality::updateData(Ui::georgetown1 *obj)
+void functionality::updateData()
 {
-
     QSqlQuery update;
     update.prepare(
         "update equipos set pts = '"+obj->lineEditpts->text()+"', win = '"+obj->lineEditwin->text()+"', tied = '"+obj->lineEdittied->text()+"' where nombre = '"+obj->lineEditnombre->text()+"'");
@@ -110,8 +104,9 @@ void functionality::updateData(Ui::georgetown1 *obj)
     }
 }
 
-void functionality::deleteData(Ui::georgetown1 *obj)
+void functionality::deleteData()
 {
+
     QSqlQuery remove;
     remove.prepare(
         "delete from equipos where nombre = '"+obj->lineEditnombre->text()+"'");
@@ -125,3 +120,4 @@ void functionality::deleteData(Ui::georgetown1 *obj)
         qDebug() << "Error! " << remove.lastError();
     }
 }
+

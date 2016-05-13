@@ -24,7 +24,8 @@ georgetown1::georgetown1(QWidget *parent) :
     {
         qDebug()<< "ERROR: You are NOT connected to the Data Base...";
     }
-    dataHandler->showData(ui);
+
+    dataHandler->showData<Ui::georgetown1>(*ui);
 }
 
 georgetown1::~georgetown1()
@@ -34,15 +35,18 @@ georgetown1::~georgetown1()
 
 void georgetown1::on_pushButtonagregar_clicked()
 {
-    dataHandler->insertEquipo(ui);
+    dataHandler->insertEquipo<Ui::georgetown1>(*ui);
+    dataHandler->showData<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonUpdate_clicked()
 {
-    dataHandler->updateData(ui);
+    dataHandler->updateData<Ui::georgetown1>(*ui);
+    dataHandler->showData<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonDelete_clicked()
 {
-    dataHandler->deleteData(ui);
+    dataHandler->deleteData<Ui::georgetown1>(*ui);
+    dataHandler->showData<Ui::georgetown1>(*ui);
 }
