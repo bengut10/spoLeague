@@ -1,5 +1,7 @@
 #include "georgetown1.h"
 #include "ui_georgetown1.h"
+#include "leagueSelection.h"
+
 
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
@@ -25,7 +27,7 @@ georgetown1::georgetown1(QWidget *parent) :
         qDebug()<< "ERROR: You are NOT connected to the Data Base...";
     }
 
-    dataHandler->showData<Ui::georgetown1>(*ui);
+    //dataHandler->createTableTeam();
 }
 
 georgetown1::~georgetown1()
@@ -35,26 +37,31 @@ georgetown1::~georgetown1()
 
 void georgetown1::on_pushButtonagregar_clicked()
 {
-    qDebug()<<"here lol ";
-    dataHandler->insertEquipo<Ui::georgetown1>(*ui);
-    dataHandler->showData<Ui::georgetown1>(*ui);
+    dataHandler->insertTeam<Ui::georgetown1>(*ui);
+    dataHandler->showTable<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonUpdate_clicked()
 {
-     qDebug()<<"here lol ";
-    dataHandler->updateData<Ui::georgetown1>(*ui);
-    dataHandler->showData<Ui::georgetown1>(*ui);
+    dataHandler->updateTeam<Ui::georgetown1>(*ui);
+    dataHandler->showTable<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_pushButtonDelete_clicked()
 {
-     qDebug()<<"here lol ";
-    dataHandler->deleteData<Ui::georgetown1>(*ui);
-    dataHandler->showData<Ui::georgetown1>(*ui);
+    dataHandler->deleteTeam<Ui::georgetown1>(*ui);
+    dataHandler->showTable<Ui::georgetown1>(*ui);
 }
 
 void georgetown1::on_displayName_clicked()
 {
-    qDebug() << "here";
+    dataHandler->showTable<Ui::georgetown1>(*ui);
+}
+
+void georgetown1::on_pushButtonReturn_clicked()
+{
+    hide();
+    goBack = new leagueSelection(this);
+    goBack->setModal(true);
+    goBack->exec();
 }

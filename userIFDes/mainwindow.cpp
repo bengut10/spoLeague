@@ -23,7 +23,7 @@ void MainWindow::on_pushButtonLogin_clicked()
     if(userN == "test" && passW == "test")
     {
         hide();
-        leagueSelect = new LeagueSelection(this);
+        leagueSelect = new leagueSelection(this);
         leagueSelect->setModal(true);
         leagueSelect->exec();
     }

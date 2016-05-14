@@ -1,4 +1,3 @@
-
 #ifndef FUNCTIONALITY_H
 #define FUNCTIONALITY_H
 
@@ -19,93 +18,104 @@ public:
     {
     }
 
-    void crearTablaEquipo ()
+    void createTableTeam ()
     {
-        QString consulta;
-        consulta.append("CREATE TABLE IF NOT EXISTS equipos("
-                        "nombre VARCHAR(100) PRIMARY KEY, "
-                        "pts INTEGER,"
+        QString query;
+        query.append("CREATE TABLE IF NOT EXISTS georgetown1("
+                        "team VARCHAR(100) PRIMARY KEY, "
+                        "games INTEGER,"
                         "win INTEGER, "
                         "tied INTEGER, "
-                        "loss INTEGER "
+                        "loss INTEGER, "
+                        "dif INTEGER,"
+                        "pts INTEGER"
                         ");");
-        QSqlQuery crear;
-        crear.prepare(consulta);
-        if(crear.exec())
+        QSqlQuery create;
+        create.prepare(query);
+        if(create.exec())
         {
-            qDebug() << "Success: Table Equipos has been created";
+            qDebug() << "Success: Table georgetown1 has been created or it already exists";
         }
         else
         {
-            qDebug() << "Unsuccesful: Table Equipos has not been created";
-            qDebug() << "Error! " << crear.lastError();
+            qDebug() << "Unsuccesful: Table georgetown1 has not been created";
+            qDebug() << "Error! " << create.lastError();
         }
     }
 
     template <class Anyclass>
-    void showData(Anyclass &UiObj){
-        QString consulta;
-        consulta.append("SELECT * FROM equipos ORDER BY pts DESC");
+    void showTable(Anyclass &UiObj){
+        QString query;
+        query.append("SELECT * FROM georgetown1 ORDER BY pts DESC");
 
-        QSqlQuery consultar;
-        consultar.prepare(consulta);
-        if(consultar.exec())
+        QSqlQuery display;
+        display.prepare(query);
+        if(display.exec())
         {
             qDebug() << "Success: Table has showed properly";
         }
         else
         {
             qDebug() << "Unsuccesful: Table has not showed properly";
-            qDebug() << "Error! " << consultar.lastError();
+            qDebug() << "Error! " << display.lastError();
         }
 
         int file = 0;
         UiObj.tableDatos->setRowCount(0);
-        while(consultar.next())
+        while(display.next())
         {
             UiObj.tableDatos->insertRow(file);
-            UiObj.tableDatos->setItem(file, 0, new QTableWidgetItem(consultar.value(0).toByteArray().constData()));
-            UiObj.tableDatos->setItem(file, 1, new QTableWidgetItem(consultar.value(1).toByteArray().constData()));
-            UiObj.tableDatos->setItem(file, 2, new QTableWidgetItem(consultar.value(2).toByteArray().constData()));
-            UiObj.tableDatos->setItem(file, 3, new QTableWidgetItem(consultar.value(3).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 0, new QTableWidgetItem(display.value(0).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 1, new QTableWidgetItem(display.value(1).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 2, new QTableWidgetItem(display.value(2).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 3, new QTableWidgetItem(display.value(3).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 4, new QTableWidgetItem(display.value(4).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 5, new QTableWidgetItem(display.value(5).toByteArray().constData()));
+            UiObj.tableDatos->setItem(file, 6, new QTableWidgetItem(display.value(6).toByteArray().constData()));
             file++;
         }
     }
 
     template <class AnyClass>
-    void insertEquipo(AnyClass &UiObj)
+    void insertTeam(AnyClass &UiObj)
     {
-        QString consulta;
-        consulta.append("INSERT INTO equipos("
-                        "nombre, "
-                        "pts,"
+        QString query;
+        query.append("INSERT INTO georgetown1("
+                        "team, "
+                        "games,"
                         "win, "
-                        "tied)"
+                        "tied,"
+                        "loss,"
+                        "dif,"
+                        "pts)"
                         "VALUES("
-                        "'"+UiObj.lineEditnombre->text()+"',"
-                        ""+UiObj.lineEditpts->text()+","
-                        ""+UiObj.lineEditwin->text()+","
-                        ""+UiObj.lineEdittied->text()+""
+                        "'"+UiObj.lineEditTeam->text()+"',"
+                        ""+UiObj.lineEditGames->text()+","
+                        ""+UiObj.lineEditWin->text()+","
+                        ""+UiObj.lineEditTied->text()+","
+                        ""+UiObj.lineEditLoss->text()+","
+                        ""+UiObj.lineEditDif->text()+","
+                        ""+UiObj.lineEditPts->text()+""
                         ");");
-        QSqlQuery insertar;
-        insertar.prepare(consulta);
-        if(insertar.exec())
+        QSqlQuery insert;
+        insert.prepare(query);
+        if(insert.exec())
         {
             qDebug() << "Success";
         }
         else
         {
             qDebug() << "Unsuccesful";
-            qDebug() << "Error! " << insertar.lastError();
+            qDebug() << "Error! " << insert.lastError();
         }
     }
 
     template <class AnyClass>
-    void updateData(AnyClass &UiObj)
+    void updateTeam(AnyClass &UiObj)
     {
         QSqlQuery update;
         update.prepare(
-            "update equipos set pts = '"+UiObj.lineEditpts->text()+"', win = '"+UiObj.lineEditwin->text()+"', tied = '"+UiObj.lineEdittied->text()+"' where nombre = '"+UiObj.lineEditnombre->text()+"'");
+            "update georgetown1 set loss = '"+UiObj.lineEditLoss->text()+"', dif = '"+UiObj.lineEditDif->text()+"', games = '"+UiObj.lineEditGames->text()+"', pts = '"+UiObj.lineEditPts->text()+"', win = '"+UiObj.lineEditWin->text()+"', tied = '"+UiObj.lineEditTied->text()+"' where team = '"+UiObj.lineEditTeam->text()+"'");
 
         if(update.exec())
         {
@@ -120,12 +130,11 @@ public:
 
 
     template <class AnyClass>
-    void deleteData(AnyClass &UiObj)
+    void deleteTeam(AnyClass &UiObj)
     {
-        qDebug() << "called";
         QSqlQuery remove;
         remove.prepare(
-            "delete from equipos where nombre = '"+UiObj.lineEditnombre->text()+"'");
+            "delete from georgetown1 where team = '"+UiObj.lineEditTeam->text()+"'");
         if(remove.exec())
         {
             qDebug() << "Success: remove runs correctly";

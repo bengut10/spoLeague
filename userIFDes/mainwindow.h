@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "leagueselection.h"
+#include "leagueSelection.h"
 
 
 namespace Ui {
@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    LeagueSelection * leagueSelect;
+    leagueSelection * leagueSelect;
 };
 
 

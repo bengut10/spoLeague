@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LeagueSelection</class>
- <widget class="QDialog" name="LeagueSelection">
+ <class>leagueSelection</class>
+ <widget class="QDialog" name="leagueSelection">
   <property name="geometry">
    <rect>
     <x>0</x>

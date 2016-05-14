@@ -14,14 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    leagueselection.cpp \
-    georgetown1.cpp
+    georgetown1.cpp \
+    leagueSelection.cpp
 
 HEADERS  += mainwindow.h \
-    leagueselection.h \
     georgetown1.h \
-    functionality.h
+    functionality.h \
+    leagueSelection.h
 
 FORMS    += mainwindow.ui \
-    leagueselection.ui \
-    georgetown1.ui
+    georgetown1.ui \
+    leagueSelection.ui

@@ -5,23 +5,24 @@
 #include "georgetown1.h"
 
 
+
 namespace Ui {
-class LeagueSelection;
+class leagueSelection;
 }
 
-class LeagueSelection : public QDialog
+class leagueSelection : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit LeagueSelection(QWidget *parent = 0);
-    ~LeagueSelection();
+    explicit leagueSelection(QWidget *parent = 0);
+    ~leagueSelection();
 
 private slots:
     void on_pushButtonG1_clicked();
 
 private:
-    Ui::LeagueSelection *ui;
+    Ui::leagueSelection *ui;
     georgetown1 * geor1;
 
 };

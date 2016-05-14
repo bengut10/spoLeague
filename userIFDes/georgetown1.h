@@ -1,12 +1,14 @@
 #ifndef GEORGETOWN1_H
 #define GEORGETOWN1_H
-#include <QDialog>
 
+#include <QDialog>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 
 #include "functionality.h"
+
+class leagueSelection;
 
 namespace Ui {
 class georgetown1;
@@ -27,10 +29,13 @@ private slots:
     void on_pushButtonUpdate_clicked();
     void on_pushButtonDelete_clicked();
 
+    void on_pushButtonReturn_clicked();
+
 private:
     Ui::georgetown1 *ui;
-    functionality *dataHandler;
+    functionality* dataHandler;
     QSqlDatabase db;
+    leagueSelection* goBack;
 };
 
 #endif // GEORGETOWN1_H
