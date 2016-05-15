@@ -18,35 +18,49 @@ public:
     {
     }
 
-    void createTableTeam ()
+    void connectToDataBase(QString dataBase)
     {
-        QString query;
-        query.append("CREATE TABLE IF NOT EXISTS georgetown1("
+        qDebug()<< "Application initiated...";
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName(dataBase);
+        if (db.open())
+        {
+            qDebug()<< "You are now connected to the Data Base...";
+        }
+        else
+        {
+            qDebug()<< "ERROR: You are NOT connected to the Data Base...";
+        }
+    }
+
+    void createTableTeam(QString tableName)
+    {
+        QString query = QString("CREATE TABLE IF NOT EXISTS "+tableName+ " ("
                         "team VARCHAR(100) PRIMARY KEY, "
                         "games INTEGER,"
                         "win INTEGER, "
                         "tied INTEGER, "
                         "loss INTEGER, "
                         "dif INTEGER,"
-                        "pts INTEGER"
-                        ");");
+                        "pts INTEGER)"
+                        );
+
         QSqlQuery create;
         create.prepare(query);
         if(create.exec())
         {
-            qDebug() << "Success: Table georgetown1 has been created or it already exists";
+            qDebug() << "Success: Table "<<tableName<<" has been created or it already exists";
         }
         else
         {
-            qDebug() << "Unsuccesful: Table georgetown1 has not been created";
+            qDebug() << "Unsuccesful: Table" <<tableName<<" has not been created";
             qDebug() << "Error! " << create.lastError();
         }
     }
 
     template <class Anyclass>
-    void showTable(Anyclass &UiObj){
-        QString query;
-        query.append("SELECT * FROM georgetown1 ORDER BY pts DESC");
+    void showTable(Anyclass &UiObj, QString tableName){
+        QString query= QString("SELECT * FROM "+tableName+" ORDER BY pts DESC");
 
         QSqlQuery display;
         display.prepare(query);
@@ -77,10 +91,9 @@ public:
     }
 
     template <class AnyClass>
-    void insertTeam(AnyClass &UiObj)
+    void insertTeam(AnyClass &UiObj, QString tableName)
     {
-        QString query;
-        query.append("INSERT INTO georgetown1("
+        QString query = QString("INSERT INTO " +tableName+ " ("
                         "team, "
                         "games,"
                         "win, "
@@ -111,11 +124,15 @@ public:
     }
 
     template <class AnyClass>
-    void updateTeam(AnyClass &UiObj)
+    void updateTeam(AnyClass &UiObj, QString tableName)
     {
+
+        QString query = QString("update "+tableName+
+                " set loss = '"+UiObj.lineEditLoss->text()+"', dif = '"+UiObj.lineEditDif->text()+"', games = '"+UiObj.lineEditGames->text()+"', pts = '"+UiObj.lineEditPts->text()+"', win = '"+UiObj.lineEditWin->text()+"', tied = '"+UiObj.lineEditTied->text()+"' where team = '"+UiObj.lineEditTeam->text()+"'");
+
+
         QSqlQuery update;
-        update.prepare(
-            "update georgetown1 set loss = '"+UiObj.lineEditLoss->text()+"', dif = '"+UiObj.lineEditDif->text()+"', games = '"+UiObj.lineEditGames->text()+"', pts = '"+UiObj.lineEditPts->text()+"', win = '"+UiObj.lineEditWin->text()+"', tied = '"+UiObj.lineEditTied->text()+"' where team = '"+UiObj.lineEditTeam->text()+"'");
+        update.prepare(query);
 
         if(update.exec())
         {
@@ -130,11 +147,11 @@ public:
 
 
     template <class AnyClass>
-    void deleteTeam(AnyClass &UiObj)
+    void deleteTeam(AnyClass &UiObj, QString tableName)
     {
+        QString query = QString("delete from " +tableName+ " where team = '"+UiObj.lineEditTeam->text()+"'");
         QSqlQuery remove;
-        remove.prepare(
-            "delete from georgetown1 where team = '"+UiObj.lineEditTeam->text()+"'");
+        remove.prepare(query);
         if(remove.exec())
         {
             qDebug() << "Success: remove runs correctly";
@@ -146,7 +163,6 @@ public:
         }
     }
 
-    
 private:
     QSqlDatabase db;
 

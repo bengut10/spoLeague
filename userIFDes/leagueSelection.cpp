@@ -19,9 +19,18 @@ leagueSelection::~leagueSelection()
 void leagueSelection::on_pushButtonG1_clicked()
 {
     hide();
-    geor1 = new georgetown1(this);
+    geor1 = new georgetown1("baseDeDatos.sqlite","georgetown1",this);
     geor1->setModal(true);
     geor1->exec();
 }
 
 
+
+void leagueSelection::on_pushButtonG2_clicked()
+{
+    hide();
+    geor2 = new georgetown1("baseDeDatos.sqlite","georgetown2",this);
+    geor2->setModal(true);
+    geor2->exec();
+
+}

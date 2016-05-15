@@ -21,9 +21,12 @@ public:
 private slots:
     void on_pushButtonG1_clicked();
 
+    void on_pushButtonG2_clicked();
+
 private:
     Ui::leagueSelection *ui;
     georgetown1 * geor1;
+    georgetown1 * geor2;
 
 };
 

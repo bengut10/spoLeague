@@ -20,6 +20,7 @@ class georgetown1 : public QDialog
 
 public:
     explicit georgetown1(QWidget *parent = 0);
+    georgetown1(QString dataBase1, QString tableName1, QWidget *parent = 0 );
     ~georgetown1();
 
 
@@ -34,8 +35,9 @@ private slots:
 private:
     Ui::georgetown1 *ui;
     functionality* dataHandler;
-    QSqlDatabase db;
     leagueSelection* goBack;
+    QString dataBase;
+    QString tableName;
 };
 
 #endif // GEORGETOWN1_H
