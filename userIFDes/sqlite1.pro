@@ -15,13 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     georgetown1.cpp \
-    leagueSelection.cpp
+    leagueSelection.cpp \
+    geo_goleo.cpp
 
 HEADERS  += mainwindow.h \
     georgetown1.h \
     functionality.h \
-    leagueSelection.h
+    leagueSelection.h \
+    geo_goleo.h
 
 FORMS    += mainwindow.ui \
     georgetown1.ui \
-    leagueSelection.ui
+    leagueSelection.ui \
+    geo_goleo.ui

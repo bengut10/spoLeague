@@ -2,10 +2,6 @@
 #include "ui_georgetown1.h"
 #include "leagueSelection.h"
 
-#include <QDebug>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
 
 georgetown1::georgetown1(QWidget *parent) :
     QDialog(parent),

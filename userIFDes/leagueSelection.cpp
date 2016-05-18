@@ -1,6 +1,13 @@
 #include "leagueSelection.h"
 #include "ui_leagueSelection.h"
+#include "geo_goleo.h"
+
+
 #include <QDebug>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+
 
 
 
@@ -25,7 +32,6 @@ void leagueSelection::on_pushButtonG1_clicked()
 }
 
 
-
 void leagueSelection::on_pushButtonG2_clicked()
 {
     hide();
@@ -33,4 +39,20 @@ void leagueSelection::on_pushButtonG2_clicked()
     geor2->setModal(true);
     geor2->exec();
 
+}
+
+void leagueSelection::on_pushButtonGoleoG1_clicked()
+{
+    hide();
+    gol1 = new geo_goleo("baseDeDatos.sqlite","goleoG1",this);
+    gol1->setModal(true);
+    gol1->exec();
+}
+
+void leagueSelection::on_pushButtonGoleoG2_clicked()
+{
+    hide();
+    gol2 = new geo_goleo("baseDeDatos.sqlite","goleoG2",this);
+    gol2->setModal(true);
+    gol2->exec();
 }
